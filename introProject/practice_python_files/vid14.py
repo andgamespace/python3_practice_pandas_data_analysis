@@ -1,8 +1,15 @@
 import numpy as np
 from sklearn import preprocessing, model_selection, neighbors
 import pandas as pd
+import os
 
-df = pd.read_csv('practice_python_files/datasets/breast+cancer+wisconsin+original/breast-cancer-wisconsin.data')
+# Determine the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the absolute path to the CSV file
+csv_path = os.path.join(script_dir, 'datasets/breast+cancer+wisconsin+original/breast-cancer-wisconsin.data')
+
+df = pd.read_csv(csv_path)
 
 df.columns = df.columns.str.strip()  # Strip leading/trailing spaces from column names
 df.replace('?', -99999, inplace=True)
